@@ -1,12 +1,11 @@
 import React from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
 import { styles } from '../../styles';
-const AuthForm = ({ email, setEmail, password, setPassword, isLogin, handleAuthentication, toggleLoginMode }) => {
+const LoginForm = ({ email, setEmail, password, setPassword, isLogin, handleAuthentication, toggleLoginMode }) => {
   
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{isLogin ? 'Sign In' : 'Sign Up'}</Text>
-
       <TextInput
         style={styles.input}
         value={email}
@@ -22,7 +21,6 @@ const AuthForm = ({ email, setEmail, password, setPassword, isLogin, handleAuthe
         secureTextEntry
       />
       <Button title={isLogin ? 'Sign In' : 'Sign Up'} onPress={handleAuthentication} color="#3498db" />
-      
       <Text style={styles.toggleText} onPress={toggleLoginMode}>
         {isLogin ? 'Need an account? Sign Up' : 'Already have an account? Sign In'}
       </Text>
@@ -30,5 +28,5 @@ const AuthForm = ({ email, setEmail, password, setPassword, isLogin, handleAuthe
   );
 };
 
-export default AuthForm;
+export default LoginForm;
 
