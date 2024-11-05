@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -9,15 +8,22 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       marginTop: 200,
     },
-    h1: {},
+    h1: {
+      fontSize: 25,
+      fontVariant: 'bold'
+    },
     h2: {},
     normalText: {
         fontSize: 20,
         padding: 2,
-        borderBottomWidth: 1,
     },
     button: {},
-    input: {},
+    input: {
+      fontSize: 20,
+      borderColor: 'black',
+      borderRadius: 10,
+    },
     label: {},
+    toggleText: {},
 
 });
