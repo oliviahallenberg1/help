@@ -1,4 +1,4 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, StyleSheet } from "react-native";
 import { fetchCocktailById } from "../../../api";
 
 export default function RecipePage({route}) {
