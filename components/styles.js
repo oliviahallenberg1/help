@@ -17,7 +17,9 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         padding: 2,
     },
-    button: {},
+    button: {
+      fontSize: 20,
+    },
     input: {
       fontSize: 20,
       borderColor: 'black',

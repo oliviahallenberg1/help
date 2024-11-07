@@ -1,14 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View , Button} from 'react-native';
 import Search from './Search';
 import LogOut from './Authentication/LogOut';
 
-export default function HomePage() {
+export default function HomePage({navigation}) {
   return (
     <View style={styles.container}>
       <Text>Welcome to Shake and Serve</Text>
       <Search></Search>
       <LogOut></LogOut>
+      <Button title='shelf' onPress={()=> navigation.navigate('Shelf')}></Button>
       <StatusBar style="auto" />
     </View>
   );
