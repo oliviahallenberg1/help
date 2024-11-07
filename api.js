@@ -20,6 +20,16 @@ export function fetchCocktailsByName(keyword) {
     })
 };
 
+export function fetchCocktailById(id) {
+  return fetch(`${apiUrl}lookup.php?i=${id}`)
+  .then(response => {
+    if (!response.ok) 
+      throw new Error('Something went wrong!' + response.statusText);
+
+    return response.json()
+  })
+}
+
 export function fetchCocktailsByIngredient(ingredient) {
     return fetch(`${apiUrl}filter.php?i=${ingredient}`)
     .then(response => {

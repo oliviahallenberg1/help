@@ -1,6 +1,7 @@
-import { Button, FlatList,  Text, View } from 'react-native';
+import { FlatList,  Text, View } from 'react-native';
 
-export default function CocktailList({ cocktails, navigation }) {
+
+export default function CocktailList({ cocktails }) {
     
     return (
         <FlatList
@@ -8,7 +9,6 @@ export default function CocktailList({ cocktails, navigation }) {
         renderItem={({ item }) => 
             <View style={{ margin: 10}}>
                 <Text style={{ fontSize: 22, fontWeight: 'bold'}}>{item.strDrink}</Text>
-                <Button title='Go to recipe' onPress={navigation.navigate('Recipe', { id: item.idDrink })}/>
             </View> 
         }
         />

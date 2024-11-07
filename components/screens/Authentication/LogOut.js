@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Button } from 'react-native';
-import { styles } from '../../styles';
+import { Button } from 'react-native';
 import { auth } from '../../../firebaseConfig.js';
 import { signOut } from '@firebase/auth';
 

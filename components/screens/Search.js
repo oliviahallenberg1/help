@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {  ActivityIndicator, Button, StatusBar, TextInput, View } from 'react-native';
 import { styles } from '../styles';
 import { fetchCocktailsByName } from '../../api.js'
-import CocktailList from './CocktailList.js';
+import CocktailList from './Cocktails/CocktailList.js';
 
 export default function Search() {
 
