@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, View} from 'react-native';
+import { ScrollView} from 'react-native';
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from '@firebase/auth';
 import { auth } from '../../../firebaseConfig.js';

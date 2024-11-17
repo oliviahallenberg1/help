@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import {  ActivityIndicator, Button, StatusBar, TextInput, View } from 'react-native';
-import { styles } from '../styles';
-import { fetchCocktailsByName } from '../../api.js'
-import CocktailList from './Cocktails/CocktailList.js';
+import { styles } from '../../styles.js';
+import { fetchCocktailsByName } from '../../../api.js'
+import CocktailList from './CocktailList.js';
+
+//TODO: Change to be search by ingredients! 
+// search by ingredients should be possible 
+// from shelf and also from recipes ingredient
 
 export default function Search() {
 
@@ -33,7 +37,6 @@ export default function Search() {
         disabled={loading}
         onPress={handleFetch} />
       <ActivityIndicator size='large' animating={loading} color='#ff0074'/>
-      <CocktailList cocktails={cocktails}/>
       <StatusBar style="auto" />
     </View>
   );

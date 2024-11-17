@@ -1,5 +1,6 @@
 import { Text, View, Image, StyleSheet } from "react-native";
 import { fetchCocktailById } from "../../../api";
+import { useState, useEffect } from "react";
 
 export default function RecipePage({route}) {
 
@@ -35,7 +36,6 @@ export default function RecipePage({route}) {
 return (
     <View>
         <Text>{recipe.name}</Text>
-        <Text>{recipe.img}</Text>
         <Image 
             style={styles.image}
             source={{ uri : recipe.img}}></Image>

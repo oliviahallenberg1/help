@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View , Button} from 'react-native';
-import Search from './Search';
+import Search from './Cocktails/Search';
 import LogOut from './Authentication/LogOut';
 
 export default function HomePage({navigation}) {
