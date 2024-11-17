@@ -1,6 +1,7 @@
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet, Button, Alert } from "react-native";
 import { fetchCocktailById } from "../../../api";
 import { useState, useEffect } from "react";
+import { addToFavorites } from "../../utils";
 
 export default function RecipePage({route}) {
 
@@ -27,11 +28,9 @@ export default function RecipePage({route}) {
                     });
                 })
                 .catch(err => console.error(err));
-        };
-        
+            };
         handleFetch();
     }, [id]);
-
     
 return (
     <View>
@@ -44,6 +43,7 @@ return (
                 <Text key={index}>{ingredient}</Text>
                 ))}
         <Text>Instructions: {recipe.instructions}</Text>
+        <Button title='Fav' onPress={() => addToFavorites(recipe)}/>
     </View>
     );
 }
