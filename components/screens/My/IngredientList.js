@@ -1,31 +1,28 @@
 import { FlatList,  Text, View, StyleSheet, Button} from 'react-native';
-import { getDatabase, ref,  remove } from 'firebase/database'
+import { getDatabase } from 'firebase/database'
 import {app, auth} from '../../../firebaseConfig';
 import { styles } from '../../styles';
+import { handleDelete } from '../../utils';
 
 
 export default function IngredientList({ ingredients }) {
 
-    const database = getDatabase(app);
-    const user = auth.currentUser;
+   const database = getDatabase(app);
+   const user = auth.currentUser;
 
-    const handleDelete = (itemKey) => {
-        if (user) {
-          const uid = user.uid;
-          remove(ref(database, `users/${uid}/shelf/ingredients/${itemKey}`))
-          .then(() => console.log("Item deleted"))
-          .catch((error) => {
-          console.error(error);
-        });
-      }
-    }  
+  const deleteIngredient = (itemKey) => {
+    if (user) {
+        const uid = user.uid;
+        handleDelete(uid, itemKey, "shelf/ingredients", database);
+    }
+};
     return (
         <FlatList
         data={ingredients}
         renderItem={({item}) =>
           <View style={filestyles.horizontal}>
               <Text key={item.key} style={styles.normalText}>{item.name} </Text>
-              <Button style={styles.button} title="Delete" onPress={() => handleDelete(item.key)}></Button>
+              <Button style={styles.button} title="Delete" onPress={() => deleteIngredient(item.key)}></Button>
           </View> 
         }/>
     );
