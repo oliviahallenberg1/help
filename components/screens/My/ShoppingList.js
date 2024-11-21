@@ -3,8 +3,7 @@ import { Alert, FlatList,  Text, View, StyleSheet, Button, TextInput} from 'reac
 import { getDatabase, get, push, ref, onValue } from 'firebase/database'
 import { app, auth } from '../../../firebaseConfig';
 import { styles } from '../../styles';
-import { handleDelete } from '../../utils';
-
+import { handleDelete, saveItem } from '../../utils';
 
 export default function ShoppingList() {
 
@@ -16,8 +15,7 @@ export default function ShoppingList() {
 
    useEffect (() => {
      if (user) {
-       const uid = user.uid;
-       const itemsRef = ref(database, `/users/${uid}/shoppinglist`);
+       const itemsRef = ref(database, `/users/${user.uid}/shoppinglist`);
        onValue(itemsRef, (snapshot) => {
          const data = snapshot.val();
          if (data) {
@@ -33,39 +31,22 @@ export default function ShoppingList() {
      }
    }, [user])
 
-   const handleSave = async () => {
-     if (!shoppingListItem.name) {
-       Alert.alert('Type your ingredient first');
-       return;
-     }
-     if (user) {
-       const uid = user.uid;
-       const itemsRef = ref(database, `users/${uid}/shoppinglist`);
-       try {
-         const snapshot = await get(itemsRef);
-         const itemsList = snapshot.exists() ? snapshot.val() : {};
-         const itemExists = Object.values(itemsList).some(
-           item => item.name.toLowerCase() === shoppingListItem.name.toLowerCase()
-         );
-         if (itemExists) {
-           Alert.alert('Item is already on the list');
-           setShoppinglistItem({ name: '' });
-         } else {
-           await push(itemsRef, shoppingListItem);
-           console.log('Item added successfully');  
-           setShoppinglistItem({ name: '' });
-         }
-       } catch (error) {
-         console.error('Error checking or adding item:', error);
-         Alert.alert('An error occurred while saving the item');
-       }
-     }
-   };
+
+  const handleSave = () => {
+      if (user) {
+          saveItem(user.uid, database, shoppingListItem, 'shoppinglist', setShoppinglistItem);
+      }
+  };
+
+  const moveItem = (itemKey) => {
+    if (user) {
+      
+    }
+  };
 
   const deleteItem = (itemKey) => {
     if (user) {
-        const uid = user.uid;
-        handleDelete(uid, itemKey, "shoppinglist", database);
+        handleDelete(user.uid, itemKey, "shoppinglist", database);
     }
 };
     return (

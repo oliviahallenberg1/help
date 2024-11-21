@@ -5,6 +5,7 @@ import { getDatabase, get, push, ref, onValue, remove } from 'firebase/database'
 import {app, auth} from '../../../firebaseConfig';
 import IngredientList from './IngredientList';
 import { styles } from '../../styles';
+import { saveItem } from '../../utils';
 
 const database = getDatabase(app);
 
@@ -17,8 +18,7 @@ export default function Shelf() {
 
     useEffect (() => {
       if (user) {
-        const uid = user.uid;
-        const ingredientsRef = ref(database, `/users/${uid}/shelf/ingredients`);
+        const ingredientsRef = ref(database, `/users/${user.uid}/shelf/ingredients`);
         onValue(ingredientsRef, (snapshot) => {
           const data = snapshot.val();
           if (data) {
@@ -34,34 +34,12 @@ export default function Shelf() {
       }
     }, [user])
 
-    const handleSave = async () => {
-      if (!ingredient.name) {
-        Alert.alert('Type your ingredient first');
-        return;
-      }
+
+    const handleSave = () => {
       if (user) {
-        const uid = user.uid;
-        const ingredientsRef = ref(database, `users/${uid}/shelf/ingredients`);
-        try {
-          const snapshot = await get(ingredientsRef);
-          const ingredientsList = snapshot.exists() ? snapshot.val() : {};
-          const ingredientExists = Object.values(ingredientsList).some(
-            item => item.name.toLowerCase() === ingredient.name.toLowerCase()
-          );
-          if (ingredientExists) {
-            Alert.alert('Ingredient is already on the list');
-            setIngredient({ name: '' });
-          } else {
-            await push(ingredientsRef, ingredient);
-            console.log('Ingredient added successfully');  
-            setIngredient({ name: '' });
-          }
-        } catch (error) {
-          console.error('Error checking or adding ingredient:', error);
-          Alert.alert('An error occurred while saving the ingredient');
-        }
+          saveItem(user.uid, database, ingredient, 'shelf/ingredients', setIngredient);
       }
-    };
+  };
 
   return (
     <View style={styles.container}>

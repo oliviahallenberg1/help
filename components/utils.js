@@ -1,4 +1,5 @@
-import { getDatabase, push, ref, remove } from 'firebase/database';
+
+import { getDatabase, get, push, ref, remove } from 'firebase/database'
 import { app, auth } from '../firebaseConfig';
 import { Alert } from 'react-native';
 
@@ -28,6 +29,40 @@ export const handleDelete = (uid, itemKey, path, database) => {
             },
         ]
     );
+};
+
+export const saveItem = async (uid, database, item, path, resetItem) => {
+    if (!item.name) {
+        Alert.alert('Please type the name of the item first');
+        return;
+    }
+
+    if (!uid) {
+        console.error("User ID is missing");
+        return;
+    }
+
+    const itemsRef = ref(database, `users/${uid}/${path}`);
+
+    try {
+        const snapshot = await get(itemsRef);
+        const itemsList = snapshot.exists() ? snapshot.val() : {};
+        const itemExists = Object.values(itemsList).some(
+            existingItem => existingItem.name.toLowerCase() === item.name.toLowerCase()
+        );
+
+        if (itemExists) {
+            Alert.alert('This item is already on the list');
+            resetItem({ name: '' });
+        } else {
+            await push(itemsRef, item);
+            console.log('Item added successfully');
+            resetItem({ name: '' });
+        }
+    } catch (error) {
+        console.error('Error saving the item:', error);
+        Alert.alert('An error occurred while saving the item');
+    }
 };
 
 export const addToFavorites = (recipe) => {
