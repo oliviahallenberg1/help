@@ -1,5 +1,5 @@
 
-import { getDatabase, get, push, ref, remove } from 'firebase/database'
+import { getDatabase, get, push, ref, remove, set } from 'firebase/database'
 import { app, auth } from '../firebaseConfig';
 import { Alert } from 'react-native';
 
@@ -31,7 +31,7 @@ export const handleDelete = (uid, itemKey, path, database) => {
     );
 };
 
-export const saveItem = async (uid, database, item, path, resetItem) => {
+export const handleSave = async (uid, database, item, path, resetItem) => {
     if (!item.name) {
         Alert.alert('Please type the name of the item first');
         return;
@@ -62,6 +62,23 @@ export const saveItem = async (uid, database, item, path, resetItem) => {
     } catch (error) {
         console.error('Error saving the item:', error);
         Alert.alert('An error occurred while saving the item');
+    }
+};
+
+export const handleMoveItem = async (database, fromPath, toPath, itemKey) => {
+    const sourceRef = ref(database, `${fromPath}/${itemKey}`);
+    const targetRef = ref(database, `${toPath}/${itemKey}`);
+  
+    try {
+        const snapshot = await get(sourceRef);
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            await set(targetRef, data);
+            await remove(sourceRef);
+            console.log(`Success`);
+        } 
+    } catch (error) {
+        console.error(`Error moving the item:`, error);
     }
 };
 

@@ -5,7 +5,7 @@ import { getDatabase, get, push, ref, onValue, remove } from 'firebase/database'
 import {app, auth} from '../../../firebaseConfig';
 import IngredientList from './IngredientList';
 import { styles } from '../../styles';
-import { saveItem } from '../../utils';
+import { handleSave } from '../../utils';
 
 const database = getDatabase(app);
 
@@ -35,9 +35,9 @@ export default function Shelf() {
     }, [user])
 
 
-    const handleSave = () => {
+    const saveItem = () => {
       if (user) {
-          saveItem(user.uid, database, ingredient, 'shelf/ingredients', setIngredient);
+          handleSave(user.uid, database, ingredient, 'shelf/ingredients', setIngredient);
       }
   };
 
@@ -49,7 +49,7 @@ export default function Shelf() {
           value={ingredient.name} />
       <Button 
           title='Add'
-          onPress={handleSave} />
+          onPress={saveItem} />
         <IngredientList ingredients={ingredients}></IngredientList>
     </View>
   );

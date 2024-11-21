@@ -3,7 +3,7 @@ import { Alert, FlatList,  Text, View, StyleSheet, Button, TextInput} from 'reac
 import { getDatabase, get, push, ref, onValue } from 'firebase/database'
 import { app, auth } from '../../../firebaseConfig';
 import { styles } from '../../styles';
-import { handleDelete, saveItem } from '../../utils';
+import { handleDelete, handleMoveItem, handleSave } from '../../utils';
 
 export default function ShoppingList() {
 
@@ -32,15 +32,17 @@ export default function ShoppingList() {
    }, [user])
 
 
-  const handleSave = () => {
+  const saveItem = () => {
       if (user) {
-          saveItem(user.uid, database, shoppingListItem, 'shoppinglist', setShoppinglistItem);
+          handleSave(user.uid, database, shoppingListItem, 'shoppinglist', setShoppinglistItem);
       }
   };
 
-  const moveItem = (itemKey) => {
+  const moveItem = async (itemKey) => {
     if (user) {
-      
+      const fromPath = `users/${user.uid}/shoppinglist`;
+      const toPath = `users/${user.uid}/shelf/ingredients`;
+      await handleMoveItem(database, fromPath, toPath, itemKey);
     }
   };
 
@@ -57,13 +59,14 @@ export default function ShoppingList() {
                 value={shoppingListItem.name} />
             <Button 
                 title='Add'
-                onPress={handleSave} />
+                onPress={saveItem} />
             <FlatList
                 data={shoppinglistItems}
                 renderItem={({item}) =>
                 <View style={filestyles.horizontal}>
                     <Text key={item.key} style={styles.normalText}>{item.name} </Text>
                     <Button style={styles.button} title="Delete" onPress={() => deleteItem(item.key)}></Button>
+                    <Button title='Move to shelf' onPress={()=>moveItem(item.key)}></Button>
                 </View> 
             }/>
         </View>
