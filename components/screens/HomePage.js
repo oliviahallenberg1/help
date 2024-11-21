@@ -11,6 +11,7 @@ export default function HomePage({navigation}) {
       <LogOut></LogOut>
       <Button title='shelf' onPress={()=> navigation.navigate('Shelf')}></Button>
       <Button title='favorites' onPress={()=> navigation.navigate('Favorites')}></Button>
+      <Button title='shoppinglist' onPress={()=> navigation.navigate('Shoppinglist')}></Button>
       <StatusBar style="auto" />
     </View>
   );

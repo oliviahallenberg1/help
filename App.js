@@ -5,6 +5,7 @@ import HomePage from './components/screens/HomePage';
 import Shelf from './components/screens/My/Shelf';
 import RecipePage from './components/screens/Cocktails/RecipePage';
 import FavoritesList from './components/screens/My/FavoritesList';
+import ShoppingList from './components/screens/My/ShoppingList';
 
 export default function App() {
 
@@ -18,6 +19,7 @@ export default function App() {
           <Stack.Screen name='Shelf' component={Shelf}/>
           <Stack.Screen name='Recipe' component={RecipePage}/>
           <Stack.Screen name='Favorites' component={FavoritesList}/>
+          <Stack.Screen name='Shoppinglist' component={ShoppingList}/>
         </Stack.Navigator>
      </NavigationContainer>
   );

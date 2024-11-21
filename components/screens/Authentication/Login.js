@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView} from 'react-native';
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from '@firebase/auth';
+import { 
+        createUserWithEmailAndPassword, 
+        signInWithEmailAndPassword, 
+        onAuthStateChanged } 
+        from '@firebase/auth';
 import { auth } from '../../../firebaseConfig.js';
 import { styles } from '../../styles';
 

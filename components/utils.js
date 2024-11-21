@@ -4,7 +4,7 @@ import { Alert } from 'react-native';
 
 export const handleDelete = (uid, itemKey, path, database) => {
     if (!uid) {
-        console.error("User ID is missing");
+        console.error("No user uid");
         return;
     }
 
