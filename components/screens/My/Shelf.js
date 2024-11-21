@@ -1,7 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, FlatList, Alert } from 'react-native';
-import { getDatabase, get, push, ref, onValue, remove } from 'firebase/database'
+import { View, TextInput, Button } from 'react-native';
+import { getDatabase, ref, onValue } from 'firebase/database'
 import {app, auth} from '../../../firebaseConfig';
 import IngredientList from './IngredientList';
 import { styles } from '../../styles';

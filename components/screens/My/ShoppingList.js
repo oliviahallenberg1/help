@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Alert, FlatList,  Text, View, StyleSheet, Button, TextInput} from 'react-native';
-import { getDatabase, get, push, ref, onValue } from 'firebase/database'
+import { getDatabase, ref, onValue } from 'firebase/database'
 import { app, auth } from '../../../firebaseConfig';
 import { styles } from '../../styles';
 import { handleDelete, handleMoveItem, handleSave } from '../../utils';
