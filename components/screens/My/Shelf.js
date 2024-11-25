@@ -34,7 +34,6 @@ export default function Shelf() {
       }
     }, [user])
 
-
     const saveItem = () => {
       if (user) {
           handleSave(user.uid, database, ingredient, 'shelf/ingredients', setIngredient);
