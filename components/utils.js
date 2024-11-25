@@ -8,7 +8,6 @@ export const handleDelete = (uid, itemKey, path, database) => {
         console.error("No user uid");
         return;
     }
-
     Alert.alert(
         "Confirm Deletion",
         "Are you sure you want to delete this item?",
@@ -36,21 +35,17 @@ export const handleSave = async (uid, database, item, path, resetItem) => {
         Alert.alert('Please type the name of the item first');
         return;
     }
-
     if (!uid) {
         console.error("User ID is missing");
         return;
     }
-
     const itemsRef = ref(database, `users/${uid}/${path}`);
-
     try {
         const snapshot = await get(itemsRef);
         const itemsList = snapshot.exists() ? snapshot.val() : {};
         const itemExists = Object.values(itemsList).some(
             existingItem => existingItem.name.toLowerCase() === item.name.toLowerCase()
         );
-
         if (itemExists) {
             Alert.alert('This item is already on the list');
             resetItem({ name: '' });
@@ -67,8 +62,7 @@ export const handleSave = async (uid, database, item, path, resetItem) => {
 
 export const handleMoveItem = async (database, fromPath, toPath, itemKey) => {
     const sourceRef = ref(database, `${fromPath}/${itemKey}`);
-    const targetRef = ref(database, `${toPath}/${itemKey}`);
-  
+    const targetRef = ref(database, `${toPath}/${itemKey}`); 
     try {
         const snapshot = await get(sourceRef);
         if (snapshot.exists()) {

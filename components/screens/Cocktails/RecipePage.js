@@ -7,6 +7,7 @@ export default function RecipePage({route}) {
 
     const { id } = route.params;
     const [recipe, setRecipe] = useState({
+        id: '',
         name: '',
         img: '', 
         ingredients: [], 
@@ -19,6 +20,7 @@ export default function RecipePage({route}) {
                 .then(data => {
                     const drink = data.drinks[0];
                     setRecipe({
+                        id: drink.idDrink,
                         name: drink.strDrink,
                         img: drink.strDrinkThumb,
                         ingredients: Object.keys(drink)

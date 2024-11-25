@@ -45,7 +45,7 @@ export default function FavoritesList() {
         renderItem={({ item }) => 
             <View style={{ margin: 10}}>
                 <Text style={{ fontSize: 22, fontWeight: 'bold'}}>{item.name}</Text>
-                <Button title='Go to recipe' onPress={()=> navigation.navigate('Recipe', { })}/>
+                <Button title='Go to recipe' onPress={()=> navigation.navigate('Recipe', { id: item.id })}/>
                 <Button title='Remove' onPress={() => deleteFavorite(item.key)}></Button>
             </View> 
            }
