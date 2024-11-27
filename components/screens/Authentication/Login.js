@@ -29,11 +29,11 @@ const Login = ({navigation}) => {
       if (isLogin) {
         await signInWithEmailAndPassword(auth, email, password);
         console.log("User signed in successfully");
-        navigation.navigate('Home');
+        navigation.navigate('Main');
       } else {
         await createUserWithEmailAndPassword(auth, email, password);
         console.log("User created successfully");
-        navigation.navigate('Home');
+        navigation.navigate('Main');
       }
     } catch (error) {
       console.error('Authentication error:', error.code, error.message);

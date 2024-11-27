@@ -1,5 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import Login from './components/screens/Authentication/Login';
 import HomePage from './components/screens/HomePage';
 import Shelf from './components/screens/My/Shelf';
@@ -8,22 +10,53 @@ import FavoritesList from './components/screens/My/FavoritesList';
 import ShoppingList from './components/screens/My/ShoppingList';
 import List from './components/screens/Cocktails/List'
 
-export default function App() {
-
   const Stack = createNativeStackNavigator();
+  const Tab = createBottomTabNavigator();
 
-  return (
-     <NavigationContainer>
-        <Stack.Navigator initialRouteName='Login'>
-          <Stack.Screen name='Login' component={Login}/>
-          <Stack.Screen name='Home' component={HomePage}/>
-          <Stack.Screen name='Shelf' component={Shelf}/>
-          <Stack.Screen name='Recipe' component={RecipePage}/>
-          <Stack.Screen name='Favorites' component={FavoritesList}/>
-          <Stack.Screen name='Shoppinglist' component={ShoppingList}/>
-          <Stack.Screen name='List' component={List}/>
-        </Stack.Navigator>
-     </NavigationContainer>
+  const HomeStack = () => (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={HomePage} />
+      <Stack.Screen name="Recipe" component={RecipePage} />
+    </Stack.Navigator>
   );
-}
+  
+  const MyStack = () => (
+    <Stack.Navigator>
+      <Stack.Screen name="Me" component={Shelf} />
+      <Stack.Screen name="Favorites" component={FavoritesList} />
+      <Stack.Screen name="Shoppinglist" component={ShoppingList} />
+      <Stack.Screen name="List" component={List} />
+      <Stack.Screen name="Recipe" component={RecipePage} />
+    </Stack.Navigator>
+  );
 
+  const MainTabs = () => (
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }) => {
+          let iconName;
+          if (route.name === 'Home') {
+            iconName = 'home';
+          } else if (route.name === 'Me') {
+            iconName = 'person';
+          }
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
+    >
+      <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Me" component={MyStack} />
+    </Tab.Navigator>
+  );
+  
+  export default function App() {
+
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Main" component={MainTabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+}
