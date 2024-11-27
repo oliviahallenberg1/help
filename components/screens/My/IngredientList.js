@@ -12,7 +12,6 @@ export default function IngredientList({ ingredients }) {
 
    const database = getDatabase(app);
    const user = auth.currentUser;
-   const [cocktails, setCocktails] = useState('');
    const navigation = useNavigation(); 
 
   const deleteIngredient = (itemKey) => {
@@ -25,7 +24,6 @@ export default function IngredientList({ ingredients }) {
   const handleFetch = (ingredient) => {
     fetchCocktailsByIngredient(ingredient)
       .then(data => {
-      //    setCocktails(data.drinks);
           navigation.navigate('List', { cocktails: data.drinks }); 
       })
       .catch(err => console.error(err));
