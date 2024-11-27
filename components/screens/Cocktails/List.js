@@ -1,7 +1,8 @@
 import { Button, FlatList,  Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function List({ cocktails }) {
+export default function List({ route }) {
+    const { cocktails } = route.params;
     const navigation = useNavigation(); 
     return (
         <FlatList
