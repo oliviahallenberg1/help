@@ -11,6 +11,7 @@ import FavoritesList from './components/screens/My/FavoritesList';
 import ShoppingList from './components/screens/My/ShoppingList';
 import List from './components/screens/Cocktails/List'
 import MyMain from './components/screens/My/MyMain';
+import Settings from './components/screens/My/Settings';
 
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
@@ -59,6 +60,11 @@ import MyMain from './components/screens/My/MyMain';
         name="Recipe" 
         component={RecipePage} 
         options={{ headerShown: true, title: "Recipe" }} 
+      />
+      <Stack.Screen 
+        name="Settings" 
+        component={Settings} 
+        options={{ headerShown: true, title: "Settings" }} 
       />
     </Stack.Navigator>
   );

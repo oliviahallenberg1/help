@@ -9,7 +9,7 @@ export default function MyMain() {
             <Card title={'Shelf'} navigate={'Shelf'}></Card>
             <Card title={'Favorites'} navigate={'Favorites'}></Card>
             <Card title={'Shopping list'} navigate={'ShoppingList'}></Card>
-            <Card title={'Share'} navigate={'todo'}></Card>
+            <Card title={'Settings'} navigate={'Settings'}></Card>
         </View>
     );
 }
