@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { colors } from './components/styles';
 import Login from './components/screens/Authentication/Login';
 import HomePage from './components/screens/HomePage';
 import Shelf from './components/screens/My/Shelf';
@@ -65,21 +66,25 @@ import MyMain from './components/screens/My/MyMain';
 
   const MainTabs = () => (
     <Tab.Navigator
-      screenOptions={({ route }) => ({
-        headerShown: false, 
-        tabBarIcon: ({ color, size }) => {
-          let iconName;
-  
-          if (route.name === 'Home') {
-            iconName = 'home';
-          } else if (route.name === 'Me') {
-            iconName = 'person';
-          }
-  
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-      })}
-    >
+    screenOptions={({ route }) => ({
+      headerShown: false,
+      tabBarIcon: ({ color, size }) => {
+        let iconName;
+
+        if (route.name === 'Home') {
+          iconName = 'home';
+        } else if (route.name === 'Me') {
+          iconName = 'person';
+        }
+        return <Ionicons name={iconName} size={size} color={color} />;
+      },
+      tabBarActiveTintColor: colors.highlight, 
+      tabBarInactiveTintColor: colors.light,  
+      tabBarStyle: {
+        backgroundColor: colors.tabBackground, 
+      },
+    })}
+  >
       <Tab.Screen name="Home" component={HomeStack} />
       <Tab.Screen name="Me" component={MyStack} />
     </Tab.Navigator>

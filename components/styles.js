@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 export const colors = {
   light: '#5f877a',
   background: '#c8dbd5',
+  tabBackground: '#adc4bd',
   normal: '#304740',
   highlight: '#084231',
   warning: '#420004'
@@ -14,17 +15,25 @@ export const styles = StyleSheet.create({
       backgroundColor: colors.background,
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: 200,
+      paddingTop: 100,
     },
     h1: {
       fontSize: 25,
-      fontVariant: 'bold'
+      fontVariant: 'bold',
+      fontFamily: '',
+      alignSelf: 'center',
+      padding: 10,
     },
-    h2: {},
+    h2: {
+      fontSize: 18,
+      padding: 2,
+      margin: 2,
+    },
     normalText: {
-        fontSize: 20,
+        fontSize: 15,
         padding: 2,
         color: colors.normal,
+        margin: 2
     },
     button: {
       fontSize: 20,
@@ -37,7 +46,9 @@ export const styles = StyleSheet.create({
     },
     image: {
       height: 200,
-      width: 200
+      width: 200,
+      alignSelf: 'center',
+      borderRadius: 10,
     },
     label: {},
     toggleText: {},

@@ -37,15 +37,16 @@ export default function RecipePage({route}) {
     
 return (
     <View>
-        <Text>{recipe.name}</Text>
+        <Text style={styles.h1}>{recipe.name}</Text>
         <Image 
             style={styles.image}
             source={{ uri : recipe.img}}></Image>
-            <Text>Ingredients:</Text>
+            <Text style={styles.h2}>Ingredients:</Text>
                 {recipe.ingredients.map((ingredient, index) => (
-                <Text key={index}>{ingredient}</Text>
+                <Text style={styles.normalText} key={index}>{ingredient}</Text>
                 ))}
-        <Text>Instructions: {recipe.instructions}</Text>
+        <Text style={styles.h2}>Instructions: </Text>
+        <Text style={styles.normalText}>{recipe.instructions}</Text>
         <Button 
             title='Fav' 
             color={colors.highlight}
