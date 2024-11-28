@@ -1,5 +1,6 @@
 import { Button, FlatList,  Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { colors } from '../../styles'
 
 export default function List({ route }) {
     const { cocktails } = route.params;
@@ -10,7 +11,10 @@ export default function List({ route }) {
         renderItem={({ item }) => 
             <View style={{ margin: 10}}>
                 <Text style={{ fontSize: 22, fontWeight: 'bold'}}>{item.strDrink}</Text>
-                <Button title='Go to recipe' onPress={()=> navigation.navigate('Recipe', { id: item.idDrink })}/>
+                <Button 
+                    title='Go to recipe' 
+                    color={colors.highlight}
+                    onPress={()=> navigation.navigate('Recipe', { id: item.idDrink })}/>
             </View> 
            }
         />

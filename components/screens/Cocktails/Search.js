@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {  ActivityIndicator, Button, StatusBar, Text, TextInput, View } from 'react-native';
-import { styles } from '../../styles.js';
+import { colors, styles } from '../../styles.js';
 import { fetchCocktailsByIngredient, fetchCocktailsByName } from '../../../api.js'
 import CocktailList from './CocktailList.js';
 
@@ -40,6 +40,7 @@ export default function Search({navigation}) {
       <Text>You are now searching by {searchByName ? 'name': 'ingredient'}</Text>
       <Button 
         title={`Switch to ${searchByName ? 'searching by ingredient' : 'searching by name'}`}
+        color={colors.highlight}
         onPress={() => setSearchByName(!searchByName)} />
       <TextInput
         style={styles.normalText}
@@ -49,6 +50,7 @@ export default function Search({navigation}) {
       <Button 
         title='Search'
         disabled={loading}
+        color={colors.highlight}
         onPress={handleFetch} />
       <ActivityIndicator size='large' animating={loading} color='#ff0074'/>
       <CocktailList cocktails={cocktails} navigation={navigation}/>

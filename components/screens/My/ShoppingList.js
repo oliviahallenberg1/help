@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { FlatList,  Text, View, StyleSheet, Button, TextInput} from 'react-native';
 import { getDatabase, ref, onValue } from 'firebase/database'
 import { app, auth } from '../../../firebaseConfig';
-import { styles } from '../../styles';
+import { styles, colors } from '../../styles';
 import { handleDelete, handleMoveItem, handleSave } from '../../utils';
 
 export default function ShoppingList() {
@@ -65,8 +65,15 @@ export default function ShoppingList() {
                 renderItem={({item}) =>
                 <View style={filestyles.horizontal}>
                     <Text key={item.key} style={styles.normalText}>{item.name} </Text>
-                    <Button style={styles.button} title="Delete" onPress={() => deleteItem(item.key)}></Button>
-                    <Button title='Move to shelf' onPress={()=>moveItem(item.key)}></Button>
+                    <Button 
+                        title='Move to shelf' 
+                        color={colors.highlight}
+                        onPress={()=>moveItem(item.key)}></Button>
+                    <Button 
+                        title="Delete" 
+                        color={colors.warning}
+                        onPress={() => deleteItem(item.key)}></Button>
+
                 </View> 
             }/>
         </View>

@@ -4,7 +4,7 @@ import { View, TextInput, Button } from 'react-native';
 import { getDatabase, ref, onValue } from 'firebase/database'
 import {app, auth} from '../../../firebaseConfig';
 import IngredientList from './IngredientList';
-import { styles } from '../../styles';
+import { styles, colors } from '../../styles';
 import { handleSave } from '../../utils';
 
 const database = getDatabase(app);
@@ -48,6 +48,7 @@ export default function Shelf() {
           value={ingredient.name} />
       <Button 
           title='Add'
+          color={colors.highlight}
           onPress={saveItem} />
         <IngredientList ingredients={ingredients}></IngredientList>
     </View>

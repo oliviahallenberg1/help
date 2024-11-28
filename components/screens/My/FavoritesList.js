@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { getDatabase, ref, onValue } from 'firebase/database'
 import {app, auth} from '../../../firebaseConfig';
 import { handleDelete } from '../../utils';
+import { colors, styles } from '../../styles';
 
 
 export default function FavoritesList() {
@@ -45,8 +46,14 @@ export default function FavoritesList() {
         renderItem={({ item }) => 
             <View style={{ margin: 10}}>
                 <Text style={{ fontSize: 22, fontWeight: 'bold'}}>{item.name}</Text>
-                <Button title='Go to recipe' onPress={()=> navigation.navigate('Recipe', { id: item.id })}/>
-                <Button title='Remove' onPress={() => deleteFavorite(item.key)}></Button>
+                <Button 
+                    title='Go to recipe' 
+                    color={colors.highlight}
+                    onPress={()=> navigation.navigate('Recipe', { id: item.id })}/>
+                <Button 
+                    title='Remove' 
+                    color={colors.warning}
+                    onPress={() => deleteFavorite(item.key)}></Button>
             </View> 
            }
         />

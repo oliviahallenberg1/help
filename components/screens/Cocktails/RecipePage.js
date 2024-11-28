@@ -2,6 +2,7 @@ import { Text, View, Image, StyleSheet, Button, Alert } from "react-native";
 import { fetchCocktailById } from "../../../api";
 import { useState, useEffect } from "react";
 import { addToFavorites } from "../../utils";
+import { colors, styles } from "../../styles";
 
 export default function RecipePage({route}) {
 
@@ -45,14 +46,10 @@ return (
                 <Text key={index}>{ingredient}</Text>
                 ))}
         <Text>Instructions: {recipe.instructions}</Text>
-        <Button title='Fav' onPress={() => addToFavorites(recipe)}/>
+        <Button 
+            title='Fav' 
+            color={colors.highlight}
+            onPress={() => addToFavorites(recipe)}/>
     </View>
     );
 }
-
-const styles = StyleSheet.create({
-    image: {
-      height: 200,
-      width: 200
-    },
-});

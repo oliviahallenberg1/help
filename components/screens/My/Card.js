@@ -1,5 +1,5 @@
 import { Text,  TouchableOpacity,  View } from "react-native";
-import { styles } from "../../styles";
+import { styles, colors } from "../../styles";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Card({title, navigate}) {
@@ -7,7 +7,7 @@ export default function Card({title, navigate}) {
     return (
         <TouchableOpacity onPress={() => navigation.navigate(navigate)}>
             <View style={styles.card}>
-                <Text>{title}</Text>
+                <Text style={{ color: 'white' }}>{title}</Text>
             </View>
         </TouchableOpacity>
     );
