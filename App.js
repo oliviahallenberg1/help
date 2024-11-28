@@ -15,11 +15,15 @@ import MyMain from './components/screens/My/MyMain';
   const Tab = createBottomTabNavigator();
 
   const HomeStack = () => (
-    <Stack.Navigator
-    screenOptions={{ headerShown: false }}
-    >
-      <Stack.Screen name="HomePage" component={HomePage} />
-      <Stack.Screen name="Recipe" component={RecipePage} />
+    <Stack.Navigator >
+      <Stack.Screen 
+        name="Home Page" 
+        component={HomePage} 
+        options={{ headerShown: false }} />
+      <Stack.Screen 
+        name="Recipe" 
+        component={RecipePage} 
+        options={{ headerShown: true, title: "Recipe" }} />
     </Stack.Navigator>
   );
   
@@ -90,7 +94,6 @@ import MyMain from './components/screens/My/MyMain';
           screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Main" component={MainTabs} />
-          <Stack.Screen name="Back" component={MyStack} />
         </Stack.Navigator>
       </NavigationContainer>
     );
