@@ -85,7 +85,6 @@ import MyMain from './components/screens/My/MyMain';
     </Tab.Navigator>
   );
   
-  
   export default function App() {
 
     return (

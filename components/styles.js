@@ -31,5 +31,21 @@ export const styles = StyleSheet.create({
     },
     label: {},
     toggleText: {},
-
+    card: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'pink',
+      borderRadius: 10,
+      width: 120,
+      height: 100,
+      padding: 10,
+      margin: 10,
+    },
+    cardContainer: {
+      flex: 1,
+      flexDirection: 'row', 
+      flexWrap: 'wrap',  
+      justifyContent: 'center',   
+      marginTop: 200,
+    }
 });

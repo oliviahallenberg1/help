@@ -1,16 +1,15 @@
 
-import { View, Button } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View } from "react-native";
 import { styles } from "../../styles";
+import Card from "./Card";
 
 export default function MyMain() {
-    const navigation = useNavigation();
     return (
-        <View style={styles.container}>
-            <Button title="Shelf" onPress={() => navigation.navigate('Shelf')}/>
-            <Button title="Favorites" onPress={() => navigation.navigate('Favorites')}/>
-            <Button title="Shopping list" onPress={() => navigation.navigate('ShoppingList')}/>
-            <Button title="Share" onPress={() => console.log('todo')}/>
+        <View style={styles.cardContainer}>
+            <Card title={'Shelf'} navigate={'Shelf'}></Card>
+            <Card title={'Favorites'} navigate={'Favorites'}></Card>
+            <Card title={'Shopping list'} navigate={'ShoppingList'}></Card>
+            <Card title={'Share'} navigate={'todo'}></Card>
         </View>
     );
 }

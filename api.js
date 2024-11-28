@@ -40,13 +40,3 @@ export function fetchCocktailsByIngredient(ingredient) {
     })
 };
 
-export function fetchCocktailsByCategory(category) {
-    return fetch(`${apiUrl}filter.php?c=${category}`)
-    .then(response => {
-      if (!response.ok) 
-        throw new Error('Something went wrong!' + response.statusText);
-
-      return response.json()
-    })
-};
-
