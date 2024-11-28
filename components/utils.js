@@ -76,14 +76,29 @@ export const handleMoveItem = async (database, fromPath, toPath, itemKey) => {
     }
 };
 
-export const addToFavorites = (recipe) => {
+export const addToFavorites = async (recipe) => {
     const database = getDatabase(app);
     const user = auth.currentUser;
 
     if (user) {
-        push(ref(database, `users/${user.uid}/favorites`), recipe)
-            .then(() => Alert.alert('Saved to favorites'))
-            .catch((err) => console.error(err));
+        const favoritesRef = ref(database, `users/${user.uid}/favorites`);
+        try {
+            const snapshot = await get(favoritesRef);
+            const favoritesList = snapshot.exists() ? snapshot.val() : {};
+            const favoriteExists = Object.values(favoritesList).some(
+                existingItem => existingItem.id === recipe.id
+            );
+            if (favoriteExists) {
+                Alert.alert('Recipe is already saved to favorites');
+            } else {
+                await push(favoritesRef, recipe);
+                Alert.alert(`${recipe.name} Saved to favorites`)
+                console.log('success');
+            }
+        } catch (error) {
+            console.log('Error', error);
+            Alert.alert('Error while saving item')
+        }
     }
 };
 

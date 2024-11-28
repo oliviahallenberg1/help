@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View , Button} from 'react-native';
+import { Text, View } from 'react-native';
 import Search from './Cocktails/Search';
 import LogOut from './Authentication/LogOut';
+import { styles } from '../styles';
 
 export default function HomePage() {
   return (
@@ -14,11 +15,4 @@ export default function HomePage() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+

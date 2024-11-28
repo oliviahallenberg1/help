@@ -18,23 +18,46 @@ import MyMain from './components/screens/My/MyMain';
     <Stack.Navigator
     screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name="Home" component={HomePage} />
+      <Stack.Screen name="HomePage" component={HomePage} />
       <Stack.Screen name="Recipe" component={RecipePage} />
     </Stack.Navigator>
   );
   
   const MyStack = () => (
-    <Stack.Navigator
-    screenOptions={{ headerShown: false }}
-    >
-      <Stack.Screen name="Me" component={MyMain} />
-      <Stack.Screen name="Shelf" component={Shelf} />
-      <Stack.Screen name="Favorites" component={FavoritesList} />
-      <Stack.Screen name="ShoppingList" component={ShoppingList} />
-      <Stack.Screen name="List" component={List} />
-      <Stack.Screen name="Recipe" component={RecipePage} />
+    <Stack.Navigator>
+      <Stack.Screen 
+        name="My Page" 
+        component={MyMain} 
+        options={{ headerShown: false }} 
+      />
+      <Stack.Screen 
+        name="Shelf" 
+        component={Shelf} 
+        options={{ headerShown: true, title: "Shelf" }} 
+      />
+      <Stack.Screen 
+        name="Favorites" 
+        component={FavoritesList} 
+        options={{ headerShown: true, title: "Favorites" }} 
+      />
+      <Stack.Screen 
+        name="ShoppingList" 
+        component={ShoppingList} 
+        options={{ headerShown: true, title: "Shopping List" }} 
+      />
+      <Stack.Screen 
+        name="List" 
+        component={List} 
+        options={{ headerShown: true, title: "Cocktail List" }} 
+      />
+      <Stack.Screen 
+        name="Recipe" 
+        component={RecipePage} 
+        options={{ headerShown: true, title: "Recipe" }} 
+      />
     </Stack.Navigator>
   );
+  
 
   const MainTabs = () => (
     <Tab.Navigator
@@ -67,6 +90,7 @@ import MyMain from './components/screens/My/MyMain';
           screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Main" component={MainTabs} />
+          <Stack.Screen name="Back" component={MyStack} />
         </Stack.Navigator>
       </NavigationContainer>
     );
