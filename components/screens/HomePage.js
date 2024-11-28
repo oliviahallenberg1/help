@@ -9,9 +9,6 @@ export default function HomePage({navigation}) {
       <Text>Welcome to Shake and Serve</Text>
       <Search></Search>
       <LogOut></LogOut>
-      <Button title='shelf' onPress={()=> navigation.navigate('Shelf')}></Button>
-      <Button title='favorites' onPress={()=> navigation.navigate('Favorites')}></Button>
-      <Button title='shoppinglist' onPress={()=> navigation.navigate('Shoppinglist')}></Button>
       <StatusBar style="auto" />
     </View>
   );

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FlatList,  Text, View, StyleSheet, Button, TouchableOpacity} from 'react-native';
 import { getDatabase } from 'firebase/database'
 import {app, auth} from '../../../firebaseConfig';
@@ -7,12 +6,11 @@ import { handleDelete } from '../../utils';
 import { fetchCocktailsByIngredient } from '../../../api';
 import { useNavigation } from '@react-navigation/native';
 
-
 export default function IngredientList({ ingredients }) {
 
-   const database = getDatabase(app);
-   const user = auth.currentUser;
-   const navigation = useNavigation(); 
+  const database = getDatabase(app);
+  const user = auth.currentUser;
+  const navigation = useNavigation(); 
 
   const deleteIngredient = (itemKey) => {
       if (user) {
