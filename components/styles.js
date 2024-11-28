@@ -68,5 +68,16 @@ export const styles = StyleSheet.create({
       flexWrap: 'wrap',  
       justifyContent: 'center',   
       marginTop: 200,
-    }
+    },     
+    resultCard: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'row',
+      backgroundColor: colors.light,
+      borderRadius: 10,
+      width: 120,
+      height: 20,
+      padding: 10,
+      margin: 10,
+    },
 });

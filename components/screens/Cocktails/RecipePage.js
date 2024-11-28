@@ -40,7 +40,13 @@ return (
         <Text style={styles.h1}>{recipe.name}</Text>
         <Image 
             style={styles.image}
-            source={{ uri : recipe.img}}></Image>
+            source={
+                recipe.img 
+                    ? { uri: recipe.img } 
+                    : require('../../../no-image.jpeg') 
+            }
+            >
+            </Image>
             <Text style={styles.h2}>Ingredients:</Text>
                 {recipe.ingredients.map((ingredient, index) => (
                 <Text style={styles.normalText} key={index}>{ingredient}</Text>

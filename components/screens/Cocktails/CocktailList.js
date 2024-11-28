@@ -1,6 +1,6 @@
 import { Button, FlatList,  Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { colors } from '../../styles';
+import {colors} from '../../styles'
 
 export default function CocktailList({ cocktails }) {
     const navigation = useNavigation(); 

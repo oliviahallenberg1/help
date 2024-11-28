@@ -52,7 +52,7 @@ export default function Search({navigation}) {
         disabled={loading}
         color={colors.highlight}
         onPress={handleFetch} />
-      <ActivityIndicator size='large' animating={loading} color='#ff0074'/>
+      <ActivityIndicator size='large' animating={loading} color={colors.highlight}/>
       <CocktailList cocktails={cocktails} navigation={navigation}/>
       <StatusBar style="auto" />
     </View>
