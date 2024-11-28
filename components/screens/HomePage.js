@@ -3,7 +3,7 @@ import { StyleSheet, Text, View , Button} from 'react-native';
 import Search from './Cocktails/Search';
 import LogOut from './Authentication/LogOut';
 
-export default function HomePage({navigation}) {
+export default function HomePage() {
   return (
     <View style={styles.container}>
       <Text>Welcome to Shake and Serve</Text>
