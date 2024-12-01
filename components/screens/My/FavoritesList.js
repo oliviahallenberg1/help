@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Button, FlatList,  Text, View } from 'react-native';
+import { Button, FlatList,  Text, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { getDatabase, ref, onValue } from 'firebase/database'
 import {app, auth} from '../../../firebaseConfig';
 import { handleDelete } from '../../utils';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import { colors, styles } from '../../styles';
 import EmptyFavorites from '../../emptyListComponents/EmptyFavorites';
 
@@ -52,10 +53,11 @@ export default function FavoritesList() {
                     title='Go to recipe' 
                     color={colors.highlight}
                     onPress={()=> navigation.navigate('Recipe', { id: item.id })}/>
-                <Button 
-                    title='Remove' 
-                    color={colors.warning}
-                    onPress={() => deleteFavorite(item.key)}></Button>
+                <TouchableOpacity 
+                      style={styles.deleteButton} 
+                      onPress={() => deleteFavorite(item.key)} >
+                           <AntDesign name="delete" size={18} color={colors.warning} />
+                    </TouchableOpacity>
             </View> 
            }
         />

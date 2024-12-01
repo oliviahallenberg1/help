@@ -26,12 +26,12 @@ export const styles = StyleSheet.create({
     },
     h2: {
       alignSelf: 'center',
-      fontSize: 18,
+      fontSize: 20,
       padding: 2,
       margin: 2,
     },
     normalText: {
-        fontSize: 15,
+        fontSize: 18,
         padding: 2,
         color: colors.normal,
         margin: 2
@@ -75,15 +75,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',   
       marginTop: 200,
     },     
-    resultCard: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'row',
-      backgroundColor: colors.light,
-      borderRadius: 10,
-      width: 120,
-      height: 20,
-      padding: 10,
-      margin: 10,
+    deleteButton: {
+      color: colors.warning
     },
 });

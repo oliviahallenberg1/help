@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { FlatList,  Text, View, Button, TextInput, Alert} from 'react-native';
+import { FlatList,  Text, View, Button, TextInput, Alert, TouchableOpacity} from 'react-native';
 import { getDatabase, ref, onValue } from 'firebase/database'
 import { app, auth } from '../../../firebaseConfig';
 import { styles, colors } from '../../styles';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import { handleDelete, handleMoveItem, handleSave } from '../../utils';
 import * as Sharing from 'expo-sharing';
 import * as FileSystem from 'expo-file-system';
@@ -94,10 +95,11 @@ export default function ShoppingList() {
                         title='Move to shelf' 
                         color={colors.highlight}
                         onPress={()=>moveItem(item.key)}></Button>
-                    <Button 
-                        title="Delete" 
-                        color={colors.warning}
-                        onPress={() => deleteItem(item.key)}></Button>
+                    <TouchableOpacity 
+                      style={styles.deleteButton} 
+                      onPress={() => deleteItem(item.key)} >
+                           <AntDesign name="delete" size={18} color={colors.warning} />
+                    </TouchableOpacity>
 
                 </View> 
             }/>

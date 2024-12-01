@@ -2,6 +2,7 @@ import { FlatList,  Text, View, Button, TouchableOpacity} from 'react-native';
 import { getDatabase } from 'firebase/database'
 import { app, auth } from '../../../firebaseConfig';
 import { colors, styles } from '../../styles';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import { handleDelete } from '../../utils';
 import { fetchCocktailsByIngredient } from '../../../api';
 import { useNavigation } from '@react-navigation/native';
@@ -40,11 +41,11 @@ export default function IngredientList({ ingredients }) {
                <TouchableOpacity onPress={() => handleFetch(item.name)}>
                   <Text style={styles.normalText}>{item.name}</Text>
                 </TouchableOpacity>
-              <Button  
-                  title="Delete" 
-                  onPress={() => deleteIngredient(item.key)}
-                  color={colors.warning}
-                  ></Button>
+                <TouchableOpacity 
+                      style={styles.deleteButton} 
+                      onPress={() => deleteIngredient(item.key)} >
+                           <AntDesign name="delete" size={18} color={colors.warning} />
+                 </TouchableOpacity>
             </View> 
           }/>
        </View>
