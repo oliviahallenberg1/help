@@ -62,17 +62,34 @@ export const handleSave = async (uid, database, item, path, resetItem) => {
 
 export const handleMoveItem = async (database, fromPath, toPath, itemKey) => {
     const sourceRef = ref(database, `${fromPath}/${itemKey}`);
-    const targetRef = ref(database, `${toPath}/${itemKey}`); 
+    const targetRef = ref(database, `${toPath}/${itemKey}`);
     try {
-        const snapshot = await get(sourceRef);
-        if (snapshot.exists()) {
-            const data = snapshot.val();
-            await set(targetRef, data);
-            await remove(sourceRef);
-            console.log(`Success`);
-        } 
+        const sourceSnapshot = await get(sourceRef);
+        if (!sourceSnapshot.exists()) {
+            console.error('Item not found in the source path.');
+            Alert.alert('The item does not exist in the source list.');
+            return;
+        }
+        const data = sourceSnapshot.val(); 
+        const itemName = data.name.toLowerCase(); 
+        // Check for duplicate in the target path
+        const targetSnapshot = await get(ref(database, toPath));
+        const targetList = targetSnapshot.exists() ? targetSnapshot.val() : {};
+        const itemExists = Object.values(targetList).some(
+            (existingItem) => existingItem.name.toLowerCase() === itemName
+        );
+
+        if (itemExists) {
+            Alert.alert('The item is already on the shelf.');
+            return;
+        }
+        // Move the item from source to target
+        await set(targetRef, data); 
+        await remove(sourceRef);   
+        console.log('Item moved successfully');
     } catch (error) {
-        console.error(`Error moving the item:`, error);
+        console.error('Error moving the item:', error);
+        Alert.alert('Error moving the item. Please try again.');
     }
 };
 
