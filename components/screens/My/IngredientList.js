@@ -22,9 +22,11 @@ export default function IngredientList({ ingredients }) {
   const handleFetch = (ingredient) => {
     fetchCocktailsByIngredient(ingredient)
       .then(data => {
-          navigation.navigate('List', { cocktails: data.drinks }); 
+        const cocktails = Array.isArray(data.drinks) ? data.drinks : [];
+        navigation.navigate('List', { cocktails });
       })
       .catch(err => console.error(err));
+        navigation.navigate('List', { cocktails: [] });
     };
 
   return (

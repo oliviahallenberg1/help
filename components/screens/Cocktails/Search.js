@@ -12,27 +12,27 @@ export default function Search({navigation}) {
   const [searchByName, setSearchByName] = useState(true);
 
   const handleFetch = () => {
-    if (searchByName) {
-      setLoading(true);
-      fetchCocktailsByName(keyword)
-        .then(data => setCocktails(data.drinks))
-        .catch(err => console.error(err))
-        .finally(() => {
-          setKeyword('');
-          setLoading(false);
-      })
-    } 
-    if (!searchByName) {
-      setLoading(true);
-      fetchCocktailsByIngredient(keyword)
-        .then(data => setCocktails(data.drinks))
-        .catch(err => console.error(err))
-        .finally(() => {
-          setKeyword('');
-          setLoading(false);
-      })
+    // if the keyword is empty, no rendering
+    if (!keyword.trim()) {
+      setCocktails([]);
+      return;
     }
-  }
+    setLoading(true); 
+    const fetch = searchByName ? fetchCocktailsByName : fetchCocktailsByIngredient;
+    fetch(keyword)
+      .then(data => {
+        if (data.drinks) {
+          setCocktails(data.drinks);
+        } else {
+          setCocktails([]); 
+        }
+      })
+      .catch(err => console.error(err))
+      .finally(() => {
+        setKeyword(''); 
+        setLoading(false); 
+      });
+  };
 
   return (
     <View style={styles.container}>

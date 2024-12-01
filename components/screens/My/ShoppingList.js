@@ -53,26 +53,25 @@ export default function ShoppingList() {
     }
 };
 
-    const shareList = async () => {
-      if (await Sharing.isAvailableAsync()) {
-        try {
-          const content = shoppinglistItems.map(item => `${item.name}`).join('\n');
-          const filePath = `${FileSystem.documentDirectory}shoppinglist.txt`
-          await FileSystem.writeAsStringAsync(filePath, content);
-          await Sharing.shareAsync(filePath, {
-            mimeType: 'text/plain', 
-            dialogTitle: 'Share Shopping List', 
-          });
-        } catch (error) {
-          console.log(error);
-          Alert.alert('An error occured while sharing list. Try again later.')
-        }
-      } else {
-        Alert.alert('Sharing is not available right now');
-        console.log('Expo sharing is not supported');
+  const shareList = async () => {
+    if (await Sharing.isAvailableAsync()) {
+      try {
+        const content = shoppinglistItems.map(item => `${item.name}`).join('\n');
+        const filePath = `${FileSystem.documentDirectory}shoppinglist.txt`
+        await FileSystem.writeAsStringAsync(filePath, content);
+        await Sharing.shareAsync(filePath, {
+          mimeType: 'text/plain', 
+          dialogTitle: 'Share Shopping List', 
+        });
+      } catch (error) {
+        console.log(error);
+        Alert.alert('An error occured while sharing list. Try again later.')
       }
-      
-    }
+    } else {
+      Alert.alert('Sharing is not available right now');
+      console.log('Expo sharing is not supported');
+    } 
+  }
 
     return (
         <View style={styles.container}>
