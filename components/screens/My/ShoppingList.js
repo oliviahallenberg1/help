@@ -103,7 +103,10 @@ export default function ShoppingList() {
 
                 </View> 
             }/>
-            <Button title="Share shoppinglist" onPress={() => shareList()}></Button>
+            <Button 
+                title="Share shoppinglist" 
+                color={colors.highlight}
+                onPress={() => shareList()}></Button>
         </View>
     );
 }

@@ -1,6 +1,6 @@
 import { Alert, Button, Text, TextInput, View } from "react-native";
 import LogOut from "../Onboarding/LogOut";
-import { styles } from "../../styles";
+import { colors, styles } from "../../styles";
 import { useState } from "react";
 import { getDatabase, ref, update } from 'firebase/database'; 
 import { app, auth } from '../../../firebaseConfig'; 
@@ -39,7 +39,10 @@ export default function Settings() {
                 onChangeText={text => setUserName(text)} 
                 value={userName} 
             />
-            <Button title="Save" onPress={changeUserName} />
+            <Button 
+                title="Save" 
+                color={colors.highlight}
+                onPress={changeUserName} />
             <LogOut /> 
         </View>
     );
