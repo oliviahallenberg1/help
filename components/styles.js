@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
       fontSize: 16,
       justifyContent: 'space-between',
       alignItems: 'center',
-      width: '90%'
+      maxWidth: '100%'
     },
     card: {
       alignItems: 'center',

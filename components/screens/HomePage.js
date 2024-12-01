@@ -28,8 +28,8 @@ export default function HomePage() {
   return (
     <View style={styles.container}>
       {(hasUserName ? 
-          <Text>Welcome back {username}</Text> : 
-          <Text>Welcome to Shake and Serve! Please, add your username in settings.</Text>)}
+          <Text style={styles.normalText} >Welcome back {username}</Text> : 
+          <Text style={styles.normalText} >Welcome to Shake and Serve! Please, add your username in settings.</Text>)}
       <Search></Search>
       <StatusBar style="auto" />
     </View>

@@ -54,7 +54,7 @@ return (
         <Text style={styles.h2}>Instructions: </Text>
         <Text style={styles.normalText}>{recipe.instructions}</Text>
         <Button 
-            title='Fav' 
+            title='Add to favorites' 
             color={colors.highlight}
             onPress={() => addToFavorites(recipe)}/>
     </View>

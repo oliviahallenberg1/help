@@ -46,8 +46,8 @@ export default function FavoritesList() {
         data={favorites}
         ListEmptyComponent={EmptyFavorites}
         renderItem={({ item }) => 
-            <View style={{ margin: 10}}>
-                <Text style={{ fontSize: 22, fontWeight: 'bold'}}>{item.name}</Text>
+            <View style={styles.itemRow}>
+                <Text style={styles.normalText}>{item.name}</Text>
                 <Button 
                     title='Go to recipe' 
                     color={colors.highlight}

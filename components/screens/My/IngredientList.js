@@ -36,7 +36,7 @@ export default function IngredientList({ ingredients }) {
           data={ingredients}
           ListEmptyComponent={EmptyShelf}
           renderItem={({item}) =>
-            <View style={styles.container}>
+            <View style={styles.itemRow}>
                <TouchableOpacity onPress={() => handleFetch(item.name)}>
                   <Text style={styles.normalText}>{item.name}</Text>
                 </TouchableOpacity>

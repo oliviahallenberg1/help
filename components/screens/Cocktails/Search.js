@@ -36,12 +36,7 @@ export default function Search({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Text>Search for cocktails</Text>
-      <Text>You are now searching by {searchByName ? 'name': 'ingredient'}</Text>
-      <Button 
-        title={`Switch to ${searchByName ? 'searching by ingredient' : 'searching by name'}`}
-        color={colors.highlight}
-        onPress={() => setSearchByName(!searchByName)} />
+      <Text style={styles.normalText}>Search for cocktails</Text>
       <TextInput
         style={styles.normalText}
         placeholder='Type keyword here'
@@ -52,6 +47,11 @@ export default function Search({navigation}) {
         disabled={loading}
         color={colors.highlight}
         onPress={handleFetch} />
+      <Text style={styles.normalText}>You are now searching by {searchByName ? 'name': 'ingredient'}</Text>
+      <Button 
+        title={`Switch to ${searchByName ? 'searching by ingredient' : 'searching by name'}`}
+        color={colors.highlight}
+        onPress={() => setSearchByName(!searchByName)} />
       <ActivityIndicator size='large' animating={loading} color={colors.highlight}/>
       <CocktailList cocktails={cocktails} navigation={navigation}/>
       <StatusBar style="auto" />
