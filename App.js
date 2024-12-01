@@ -13,6 +13,8 @@ import List from './components/screens/Cocktails/List'
 import MyMain from './components/screens/My/MyMain';
 import Settings from './components/screens/My/Settings';
 import GetStarted from './components/screens/Onboarding/GetStarted';
+import RandomRecipe from './components/screens/Cocktails/RandomRecipe';
+import Search from './components/screens/Cocktails/Search';
 
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
@@ -42,6 +44,14 @@ import GetStarted from './components/screens/Onboarding/GetStarted';
         name="Recipe" 
         component={RecipePage} 
         options={{ headerShown: true, title: "Recipe" }} />
+      <Stack.Screen 
+        name="RandomRecipe" 
+        component={RandomRecipe} 
+        options={{ headerShown: true, title: "Random Recipe" }} />
+      <Stack.Screen 
+        name="Search" 
+        component={Search} 
+        options={{ headerShown: true, title: "Search" }} />
     </Stack.Navigator>
   );
   

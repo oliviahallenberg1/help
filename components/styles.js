@@ -25,6 +25,7 @@ export const styles = StyleSheet.create({
       padding: 10,
     },
     h2: {
+      alignSelf: 'center',
       fontSize: 18,
       padding: 2,
       margin: 2,

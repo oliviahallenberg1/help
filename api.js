@@ -1,7 +1,7 @@
 const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 
-export function fetchAllCocktails() {
-    return fetch(`${apiUrl}search.php?f=a`)
+export function fetchRandomCocktail() {
+    return fetch(`${apiUrl}random.php`)
     .then(response => {
       if (!response.ok) 
         throw new Error('Something went wrong!' + response.statusText);

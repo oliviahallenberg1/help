@@ -1,5 +1,5 @@
 import { Text,  TouchableOpacity,  View } from "react-native";
-import { styles, colors } from "../../styles";
+import { styles, colors } from "../styles";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Card({title, navigate}) {

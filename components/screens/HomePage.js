@@ -1,15 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
-import Search from './Cocktails/Search';
-import { styles } from '../styles';
+import { colors, styles } from '../styles';
 import { getDatabase, ref, onValue } from 'firebase/database'; 
 import { auth } from '../../firebaseConfig';
+import Card from './Card';
+
 
 export default function HomePage() {
   const user = auth.currentUser;
   const [username, setUsername] = useState('');
   const hasUserName = username !== '';
+  const [showRandomRecipe, setRandomRecipe] = useState(true);
 
   useEffect(() => {
     if (user) {
@@ -28,9 +30,12 @@ export default function HomePage() {
   return (
     <View style={styles.container}>
       {(hasUserName ? 
-          <Text style={styles.normalText} >Welcome back {username}</Text> : 
+          <Text style={styles.h1} >Welcome back {username}</Text> : 
           <Text style={styles.normalText} >Welcome to Shake and Serve! Please, add your username in settings.</Text>)}
-      <Search></Search>
+           <View style={styles.cardContainer}>
+              <Card title={'Get a random cocktail'} navigate={'RandomRecipe'}></Card>
+              <Card title={'Search for recipes'} navigate={'Search'}></Card>
+           </View>
       <StatusBar style="auto" />
     </View>
   );

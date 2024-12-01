@@ -36,9 +36,9 @@ export default function Search({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.normalText}>Search for cocktails</Text>
+      <Text style={styles.h1}>Search for cocktails</Text>
       <TextInput
-        style={styles.normalText}
+        style={styles.h2}
         placeholder='Type keyword here'
         value={keyword}
         onChangeText={text => setKeyword(text)}/>
@@ -47,7 +47,7 @@ export default function Search({navigation}) {
         disabled={loading}
         color={colors.highlight}
         onPress={handleFetch} />
-      <Text style={styles.normalText}>You are now searching by {searchByName ? 'name': 'ingredient'}</Text>
+      <Text style={styles.h2}>You are now searching by {searchByName ? 'name': 'ingredient'}</Text>
       <Button 
         title={`Switch to ${searchByName ? 'searching by ingredient' : 'searching by name'}`}
         color={colors.highlight}

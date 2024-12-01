@@ -1,7 +1,7 @@
 
 import { View } from "react-native";
 import { styles } from "../../styles";
-import Card from "./Card";
+import Card from "../Card";
 
 export default function MyMain() {
     return (
