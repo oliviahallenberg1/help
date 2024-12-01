@@ -102,3 +102,7 @@ export const addToFavorites = async (recipe) => {
     }
 };
 
+export const shareList = () => {
+    
+}
+

@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import { FlatList,  Text, View, StyleSheet, Button, TextInput} from 'react-native';
+import { FlatList,  Text, View, Button, TextInput, Alert} from 'react-native';
 import { getDatabase, ref, onValue } from 'firebase/database'
 import { app, auth } from '../../../firebaseConfig';
 import { styles, colors } from '../../styles';
 import { handleDelete, handleMoveItem, handleSave } from '../../utils';
+import * as Sharing from 'expo-sharing';
+import * as FileSystem from 'expo-file-system';
 
 export default function ShoppingList() {
 
    const database = getDatabase(app);
    const user = auth.currentUser;
-
    const [shoppingListItem, setShoppinglistItem] = useState({name : ''});
    const [shoppinglistItems, setShoppinglistItems] = useState([]);
 
@@ -51,6 +52,28 @@ export default function ShoppingList() {
         handleDelete(user.uid, itemKey, "shoppinglist", database);
     }
 };
+
+    const shareList = async () => {
+      if (await Sharing.isAvailableAsync()) {
+        try {
+          const content = shoppinglistItems.map(item => `${item.name}`).join('\n');
+          const filePath = `${FileSystem.documentDirectory}shoppinglist.txt`
+          await FileSystem.writeAsStringAsync(filePath, content);
+          await Sharing.shareAsync(filePath, {
+            mimeType: 'text/plain', 
+            dialogTitle: 'Share Shopping List', 
+          });
+        } catch (error) {
+          console.log(error);
+          Alert.alert('An error occured while sharing list. Try again later.')
+        }
+      } else {
+        Alert.alert('Sharing is not available right now');
+        console.log('Expo sharing is not supported');
+      }
+      
+    }
+
     return (
         <View style={styles.container}>
             <TextInput style={styles.input}
@@ -77,6 +100,7 @@ export default function ShoppingList() {
 
                 </View> 
             }/>
+            <Button title="Share shoppinglist" onPress={() => shareList()}></Button>
         </View>
     );
 }
