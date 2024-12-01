@@ -1,10 +1,11 @@
-import { FlatList,  Text, View, StyleSheet, Button, TouchableOpacity} from 'react-native';
+import { FlatList,  Text, View, Button, TouchableOpacity} from 'react-native';
 import { getDatabase } from 'firebase/database'
-import {app, auth} from '../../../firebaseConfig';
+import { app, auth } from '../../../firebaseConfig';
 import { colors, styles } from '../../styles';
 import { handleDelete } from '../../utils';
 import { fetchCocktailsByIngredient } from '../../../api';
 import { useNavigation } from '@react-navigation/native';
+import EmptyShelf from '../../emptyListComponents/EmptyShelf';
 
 export default function IngredientList({ ingredients }) {
 
@@ -33,6 +34,7 @@ export default function IngredientList({ ingredients }) {
       <View>
           <FlatList
           data={ingredients}
+          ListEmptyComponent={EmptyShelf}
           renderItem={({item}) =>
             <View style={styles.container}>
                <TouchableOpacity onPress={() => handleFetch(item.name)}>

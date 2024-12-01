@@ -6,6 +6,7 @@ import { styles, colors } from '../../styles';
 import { handleDelete, handleMoveItem, handleSave } from '../../utils';
 import * as Sharing from 'expo-sharing';
 import * as FileSystem from 'expo-file-system';
+import EmptyShoppingList from '../../emptyListComponents/EmptyShoppingList';
 
 export default function ShoppingList() {
 
@@ -85,6 +86,7 @@ export default function ShoppingList() {
                 onPress={saveItem} />
             <FlatList
                 data={shoppinglistItems}
+                ListEmptyComponent={EmptyShoppingList}
                 renderItem={({item}) =>
                 <View style={styles.itemRow}>
                     <Text key={item.key} style={styles.normalText}>{item.name} </Text>

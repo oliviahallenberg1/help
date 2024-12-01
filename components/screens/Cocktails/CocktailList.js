@@ -1,14 +1,14 @@
 import { Button, FlatList,  Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {colors} from '../../styles'
-import EmptyList from './EmptyList';
+import NoCocktails from '../../emptyListComponents/NoCocktails';
 
 export default function CocktailList({ cocktails }) {
     const navigation = useNavigation(); 
     return (
         <FlatList
         data={cocktails}
-        ListEmptyComponent={EmptyList}
+        ListEmptyComponent={NoCocktails}
         renderItem={({ item }) => 
             <View style={{ margin: 10}}>
                 <Text style={{ fontSize: 22, fontWeight: 'bold'}}>{item.strDrink}</Text>

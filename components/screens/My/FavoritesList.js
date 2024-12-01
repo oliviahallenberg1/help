@@ -5,6 +5,7 @@ import { getDatabase, ref, onValue } from 'firebase/database'
 import {app, auth} from '../../../firebaseConfig';
 import { handleDelete } from '../../utils';
 import { colors, styles } from '../../styles';
+import EmptyFavorites from '../../emptyListComponents/EmptyFavorites';
 
 
 export default function FavoritesList() {
@@ -43,6 +44,7 @@ export default function FavoritesList() {
     return (
         <FlatList
         data={favorites}
+        ListEmptyComponent={EmptyFavorites}
         renderItem={({ item }) => 
             <View style={{ margin: 10}}>
                 <Text style={{ fontSize: 22, fontWeight: 'bold'}}>{item.name}</Text>
