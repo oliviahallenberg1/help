@@ -27,7 +27,7 @@ import GetStarted from './components/screens/Onboarding/GetStarted';
       <Stack.Screen 
         name="Login" 
         component={Login} 
-        options={{ headerShown: true, title: "Log in" }} />
+        options={{ headerShown: true, title: "Login to Shake and Serve" }} />
     </Stack.Navigator>
     );
   }
