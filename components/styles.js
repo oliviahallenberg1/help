@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
       backgroundColor: colors.background,
       alignItems: 'center',
       justifyContent: 'center',
-      paddingTop: 100,
+      paddingTop: 90,
     },
     h1: {
       fontSize: 25,
@@ -50,6 +50,11 @@ export const styles = StyleSheet.create({
       width: 200,
       alignSelf: 'center',
       borderRadius: 10,
+    },
+    logoImage: {
+      height: 250,
+      width: 200,
+      alignSelf: 'center',
     },
     itemRow: {
       flexDirection: 'row',
