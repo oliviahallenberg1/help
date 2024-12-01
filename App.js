@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { colors } from './components/styles';
-import Login from './components/screens/Authentication/Login';
+import Login from './components/screens/Onboarding/Login';
 import HomePage from './components/screens/HomePage';
 import Shelf from './components/screens/My/Shelf';
 import RecipePage from './components/screens/Cocktails/RecipePage';
@@ -12,9 +12,25 @@ import ShoppingList from './components/screens/My/ShoppingList';
 import List from './components/screens/Cocktails/List'
 import MyMain from './components/screens/My/MyMain';
 import Settings from './components/screens/My/Settings';
+import GetStarted from './components/screens/Onboarding/GetStarted';
 
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
+
+  const OnboardingStack = () => {
+    return(
+    <Stack.Navigator initialRouteName="GetStarted">
+      <Stack.Screen 
+        name="Get Started" 
+        component={GetStarted} 
+        options={{ headerShown: false }} />
+      <Stack.Screen 
+        name="Login" 
+        component={Login} 
+        options={{ headerShown: true, title: "Log in" }} />
+    </Stack.Navigator>
+    );
+  }
 
   const HomeStack = () => (
     <Stack.Navigator >
@@ -100,9 +116,9 @@ import Settings from './components/screens/My/Settings';
 
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login"
+        <Stack.Navigator initialRouteName="Onboarding"
           screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Onboarding" component={OnboardingStack} />
           <Stack.Screen name="Main" component={MainTabs} />
         </Stack.Navigator>
       </NavigationContainer>

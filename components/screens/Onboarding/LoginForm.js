@@ -6,7 +6,7 @@ const LoginForm = ({ email, setEmail, password, setPassword, isLogin, handleAuth
   
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{isLogin ? 'Sign In' : 'Sign Up'}</Text>
+      <Text style={styles.h1}>Shake and Serve</Text>
       <TextInput
         style={styles.input}
         value={email}

@@ -1,5 +1,5 @@
 import { Alert, Button, Text, TextInput, View } from "react-native";
-import LogOut from "../Authentication/LogOut";
+import LogOut from "../Onboarding/LogOut";
 import { styles } from "../../styles";
 import { useState } from "react";
 import { getDatabase, ref, update } from 'firebase/database'; 
