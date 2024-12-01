@@ -52,18 +52,19 @@ export default function ShoppingList() {
     }
 };
     return (
-        <View>
-            <TextInput style={{fontSize: 20}}
+        <View style={styles.container}>
+            <TextInput style={styles.input}
                 placeholder='Add item to shoppinglist'
                 onChangeText={text => setShoppinglistItem({...shoppingListItem, name: text})}
                 value={shoppingListItem.name} />
             <Button 
                 title='Add'
+                color={colors.highlight}
                 onPress={saveItem} />
             <FlatList
                 data={shoppinglistItems}
                 renderItem={({item}) =>
-                <View style={filestyles.horizontal}>
+                <View style={styles.itemRow}>
                     <Text key={item.key} style={styles.normalText}>{item.name} </Text>
                     <Button 
                         title='Move to shelf' 
@@ -81,16 +82,4 @@ export default function ShoppingList() {
 }
 
 
-const filestyles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    horizontal: {
-      flex: 1,
-      flexDirection: 'column'
-    }
-  });
   

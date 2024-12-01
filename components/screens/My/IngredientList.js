@@ -32,7 +32,7 @@ export default function IngredientList({ ingredients }) {
           <FlatList
           data={ingredients}
           renderItem={({item}) =>
-            <View style={filestyles.horizontal}>
+            <View style={styles.container}>
                <TouchableOpacity onPress={() => handleFetch(item.name)}>
                   <Text style={styles.normalText}>{item.name}</Text>
                 </TouchableOpacity>
@@ -48,16 +48,5 @@ export default function IngredientList({ ingredients }) {
 }
 
 
-const filestyles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    horizontal: {
-      flex: 1,
-      flexDirection: 'column'
-    }
-  });
+
   
