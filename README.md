@@ -8,4 +8,4 @@ Shake and Serve is created using expo-create-app. The code is written in Javascr
 
 ## Running the project
 
-Use `npm run start` to run the app.
+Use `npx expo start` to run the app.
